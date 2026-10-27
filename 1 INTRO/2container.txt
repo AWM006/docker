@@ -1,0 +1,3 @@
+in docker we use container 
+
+those container are the things where we we definne our OS, service, tools and code which we need to run the project

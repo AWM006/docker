@@ -1,0 +1,5 @@
+guess you build a project which runs fine in your system but when you run on another system it crash and not work
+
+those happens due to different system architecture and diiferent software versions which are used in the project
+
+to solve this we use docker where it can run easily with some indication we define

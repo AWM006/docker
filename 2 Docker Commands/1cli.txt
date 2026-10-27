@@ -1,0 +1,1 @@
+after install docker use "docker -v" to see the version of docker you intsalled

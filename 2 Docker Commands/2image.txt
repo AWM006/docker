@@ -1,0 +1,23 @@
+>>>>> docker pull <image_name>
+
+to download a image file from docker name using the image name example:- "docker pull hello-world"  
+
+
+
+>>>>> docker pull <image_name>:<version>
+
+to download a image with specific version (you can see available version in hub.docker.com)
+
+
+
+>>>>> docker images
+
+to see all image files in your docker with their size and id (tag means version you downloaded)
+
+
+>>>>> docker rmi <image_name>
+
+to delete an image from system
+
+
+note:- you can set environment variable before run an image which is available in the  project in dockerhub given by the developer

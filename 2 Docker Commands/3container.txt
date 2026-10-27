@@ -1,0 +1,93 @@
+once image download we need to convert it into container to run the program
+---------------------------------------------------------------------------
+
+>>>>> docker run <image_name>
+
+this command helps to convert and run the image example:- docker run hello-world
+
+
+
+
+
+
+
+>>>>> docker run -it <image_name>
+
+this helps to run docker image with interactive mode where we can give input also and get output
+exp:- "docker run -it ubuntu" 
+
+
+
+
+
+
+
+
+
+
+
+>>>>> docker ps 
+
+to see all running container inside system
+
+
+>>>>> docker ps -a 
+
+to see all container in system
+
+
+
+
+
+
+
+>>>>> docker run -d <image_name>
+
+this run a docker container in background
+
+
+
+
+
+
+>>>>>> docker compose exec -it <service_name> <command>
+
+this enter in a container, guess a ubuntu container is running then you want to enter the shell then use this  
+for the <command> you run "docker ps" you can find COMMAND
+
+example:-
+
+CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                      PORTS     NAMES
+a5d9167cb48d   ubuntu    "/bin/bash"   11 minutes ago   Up 10 minutes                         romantic_williams
+so my command should be like "docker exec -it romantic_williams bash"
+
+
+
+
+
+
+>>>>> docker run -d -e <environment_variable>  <image_name>
+
+some images we need to define some environment varibale without this the container doesn't start
+example:- "docker run -e MYSQL_ROOT_PASSWORD=secret  mysql"
+
+
+
+
+
+
+
+
+
+>>>>> docker stop <container_name>
+
+to stop a running container 
+
+
+
+
+
+
+>>>>> docker rm <container_name>
+
+to delete an container

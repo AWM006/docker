@@ -1,0 +1,48 @@
+services:
+  awm_postgres:
+    image: postgres:18.6  # here we define the application we want to use
+    
+    environment:                  # here we define the environment needs to start the application (some application without there environment can't even start read their docker documentation first)
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: rootpass
+      POSTGRES_DB: AWMdb
+    
+    ports:
+      - "5432:5432"  # ports where our service start here service also worked in our main system also cause we use port binding
+
+    volumes:
+      - ./sqlcode.sql:/docker-entrypoint-initdb.d/sqlcode.sql   # this is voulme to execute our sqlcode.sql file to run (got this by documentation)
+
+
+    healthcheck:                                              #healthcheck by owner  of this service image owner to check that this service running after execute or not
+      test: ["CMD-SHELL", "pg_isready -U postgres -d AWMdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+
+
+
+
+
+
+  awm_node:
+      build: ./       #this execute the "Dockerfile" inside our project folder
+      
+      ports:
+        - "5000:5000"
+      
+      
+      environment:          #environment set by me which can be access in our project you can open sqlPool.js (host should be name of service, port user passowrd database defined already service of awm_postgres)
+        DB_HOST: awm_postgres
+        DB_PORT: 5432
+        DB_USER: postgres
+        DB_PASSWORD: rootpass
+        DB_NAME: AWMdb
+
+
+
+      depends_on:         #before start first check those options then start the awmNode here it check "awm_postgres" service's "condition: service_healthy" which provide by awm_postgres's "healthcheck"
+        awm_postgres:      
+          condition: service_healthy

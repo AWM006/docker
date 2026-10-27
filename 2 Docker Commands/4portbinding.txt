@@ -1,0 +1,41 @@
+i have start a mysql docker container and use "docker ps" command the output is 
+
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                 NAMES
+70be3e01e1e0   mysql     "docker-entrypoint.s…"   39 seconds ago   Up 39 seconds   3306/tcp, 33060/tcp   eloquent_black
+
+(if you have wordwrap turn off this)
+
+
+
+there you can see 
+PORTS
+3306/tcp, 33060/tcp
+
+but its not your system port you can't access 3306 from your system directly
+there we use port binding where a system port redirect our request to this container
+
+
+
+
+
+
+
+
+
+
+to do that use 
+docker run -p<your_system_port>:<conatiner_define_port> <image_name>
+
+example:- docker run -e MYSQL_ROOT_PASSWORD=secret -p5000:3306 mysql (now we can access it throw 5000 in my system)
+
+
+
+
+
+
+
+
+
+now again i use command "docker ps"
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                                         NAMES
+6d9ca13aead5   mysql     "docker-entrypoint.s…"   7 seconds ago   Up 6 seconds   0.0.0.0:5000->3306/tcp, [::]:5000->3306/tcp   sleepy_fermi

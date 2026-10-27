@@ -1,0 +1,46 @@
+there we have a project where we need node and sql both either we can use ubuntu and execute code or use "docker-compose.yml"
+
+for that first create a file "docker-compose.yml"
+
+the structure should be like that 
+
+
+
+
+---------------------------------------------------------------------
+services:                                                            
+    <set_any_service_name>:
+        image: <application_software>:<version>
+
+        -------------
+        -------------
+        ------------- #variable and properties along it
+
+    <set_any_service_name>:
+        image: <application_software>:<version>
+
+        -------------
+        -------------
+        ------------- #variable and properties along it
+
+    <set_any_service_name>:
+        image: <application_software>:<version>
+
+        -------------
+        -------------
+        ------------- #variable and properties along it
+
+------------------------------------------------------------------------
+        
+
+
+
+
+
+
+
+
+
+after build use "docker compose up" inside the project directory to preview the project and "docker compose down" to stop that
+
+this is just script we can't create a full application with it
