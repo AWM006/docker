@@ -1,0 +1,38 @@
+services:
+
+
+
+  app:
+    build: ./
+    container_name: express_app
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://root:rootpassword@test_mongo:27017/mydatabase?authSource=admin
+    depends_on:
+      - test_mongo
+    volumes:
+      - app_data:/data/appdata
+
+
+  test_mongo:
+    image: mongo:7
+    container_name: mymongoserver
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+
+
+
+    # in docker once we stop the container the new content in it vanished and restart again using this docker create a space where store all the new data and when again start the data remains there 
+    volumes:
+      - mongo-data:/data/db
+
+
+#we have to define the volumes name there so then the space create
+volumes:
+  app_data:
+  mongo-data:
